@@ -1,7 +1,6 @@
 import 'package:adawat_provider_app/custom_widgets/custom_appbar.dart';
 import 'package:adawat_provider_app/custom_widgets/custom_button.dart';
 import 'package:adawat_provider_app/custom_widgets/custom_textfield.dart';
-import 'package:adawat_provider_app/custom_widgets/location_container.dart';
 import 'package:adawat_provider_app/helpers/common_functions.dart';
 import 'package:adawat_provider_app/helpers/routes.dart';
 import 'package:adawat_provider_app/screens/auth/sign_up/screen_two/screen_two_viewmodel.dart';
@@ -28,7 +27,7 @@ class ScreenTwoView extends StatelessWidget {
             StepperText(index: 1, texts: [
               lang_key.personalInfo.tr,
               lang_key.address.tr,
-              lang_key.bank.tr
+              lang_key.bankAccount.tr
             ]),
             CustomTextField(
               title: lang_key.label.tr,

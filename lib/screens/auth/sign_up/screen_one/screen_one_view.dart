@@ -34,7 +34,7 @@ class ScreenOneView extends StatelessWidget {
             StepperText(index: 0, texts: [
               lang_key.personalInfo.tr,
               lang_key.address.tr,
-              lang_key.bank.tr
+              lang_key.bankAccount.tr
             ]),
             const Image(image: Svg('assets/svg_vectors/sign_up.svg',)),
             Form(

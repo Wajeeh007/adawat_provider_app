@@ -16,14 +16,16 @@ class LanguageController extends GetxController {
     'en_US': {
       'languageCode': 'en',
       'countryCode': 'US',
-      'description': 'English',
+      'name': 'English',
+      'englishName': 'English',
       'selected': false,
       'color': Colors.blue[600],
     },
     'ar_SA': {
       'languageCode': 'ar',
       'countryCode': 'SA',
-      'description': 'العربية',
+      'name': 'العربية',
+      'englishName': 'Arabic',
       'selected': false,
       'color': Colors.black,
     },
@@ -54,7 +56,7 @@ class LanguageController extends GetxController {
     locale.value = Get.locale.toString();
     languageKey(key);
     storage.write('language_key', key);
-    language(optionsLocales[key]['description']);
+    language(optionsLocales[key]['name']);
     countryKey(optionsLocales[key]['countryCode']);
 
     update();

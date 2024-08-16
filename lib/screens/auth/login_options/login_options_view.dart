@@ -59,19 +59,21 @@ class LoginOptionsView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      lang_key.dontHaveAccount.tr,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    InkWell(
-                      child: Text(
-                        lang_key.signUp.tr,
-                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            decoration: TextDecoration.underline,
-                            color: primaryYellow
-                        ),
+                    RichText(
+                      text: TextSpan(
+                        text: lang_key.dontHaveAccount.tr,
+                        style: Theme.of(context).textTheme.labelMedium,
+                        children: [
+                          TextSpan(
+                            text: lang_key.signUp.tr,
+                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                decoration: TextDecoration.underline,
+                                color: primaryYellow
+                            ),
+                            // recognizer: TapGestureRecognizer()..onTap = () => Get.toNamed(AppRoutes.signUpScreenOne)
+                          )
+                        ]
                       ),
-                      onTap: () => Get.toNamed(AppRoutes.signUpScreenOne),
                     ),
                   ],
                 ),
@@ -93,7 +95,7 @@ class ContinueWithEmail extends StatelessWidget {
     return CustomButton(
       width: Get.width * 0.8,
       color: Colors.transparent,
-      onTap: () => Get.toNamed(AppRoutes.loginWithEmail),
+      onTap: () => Get.offAllNamed(AppRoutes.appBarAndDrawer),
       borderStyle: Border.all(
           color: Get.isDarkMode ? darkThemeLightGrey : primaryBlack,
           width: 1.5

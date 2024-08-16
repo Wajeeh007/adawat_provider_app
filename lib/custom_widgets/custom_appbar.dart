@@ -11,14 +11,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final double? height;
   final double? leadingWidth, elevation;
-  final void Function()? onTap;
-  final bool? backBtn;
+  final bool? showLeading;
   final Color? bgColor;
   final Widget? bottom;
   final Widget? titleWidget;
   final bool centerTitle;
   final VoidCallback? backBtnOnPressed;
   final bool automaticallyImplyLeading;
+  final Alignment? backBtnLeadingAlignment;
 
   const CustomAppBar(
       {super.key,
@@ -31,13 +31,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         this.height = 55,
         this.leadingWidth,
         this.elevation,
-        this.onTap,
-        this.backBtn = true,
+        this.showLeading = true,
         this.bgColor,
         this.bottom,
         this.backBtnOnPressed,
-        this.automaticallyImplyLeading = true
-      });
+        this.automaticallyImplyLeading = true,
+        this.backBtnLeadingAlignment,
+      }) : assert((titleText != null && titleWidget == null) || (titleWidget != null && titleText == null), 'Either remove both titleText and titleWidget property or use one of the two'),
+          assert((includeNotification != null && action == null) || (includeNotification == null && action == null) || (includeNotification == null && action != null), 'Cannot provide both action and includeNotification property.\nRemove one to resolve error'),
+          assert((leading == null && (showLeading == true || showLeading == false)) || (leading != null && showLeading == true), 'Cannot provide leading and set showLeading to false'),
+          assert(backBtnLeadingAlignment == null || leading == null, 'Cannot provide back button alignment and leading.\n Remove one to resolve error');
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +80,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: titleWidget ?? (titleText != null ? Text(
         titleText!,
         style: Theme.of(context).textTheme.bodyMedium,
-      ) : null),
-      leading: backBtn == false ? null : leading ??
+      ) : null
+      ),
+      leading: showLeading! ? leading ??
               IconButton(
+                padding: EdgeInsets.zero,
+                alignment: backBtnLeadingAlignment ?? Alignment.center,
                 onPressed: backBtnOnPressed ?? () => Get.back(),
                 icon: const Icon(Icons.arrow_back_ios),
-              ),
+              ) : null,
       bottom: bottom != null ? PreferredSize(preferredSize: preferredSize, child: bottom!) : null
     );
   }

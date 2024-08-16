@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:adawat_provider_app/helpers/languages/translations_key.dart' as lang_key;
-import 'package:get/get_rx/get_rx.dart';
 
 class ScreenOneViewModel extends GetxController {
 

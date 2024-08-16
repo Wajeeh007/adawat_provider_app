@@ -1,6 +1,6 @@
 class ServiceModel {
 
-  String? serviceName;
+  String? categoryName;
   double? price;
   String? url;
   String? measuringUnit;
@@ -10,7 +10,7 @@ class ServiceModel {
   ServiceModel({
     this.url,
     this.price,
-    this.serviceName,
+    this.categoryName,
     this.measuringUnit,
     this.serviceCategory,
     this.duration

@@ -1,9 +1,11 @@
+import 'package:adawat_provider_app/custom_widgets/custom_appbar.dart';
 import 'package:adawat_provider_app/helpers/common_functions.dart';
 import 'package:adawat_provider_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'notifications_viewmodel.dart';
 import 'notifications_model.dart';
+import 'package:adawat_provider_app/helpers/languages/translations_key.dart' as lang_key;
 
 final NotificationsViewModel viewModel = Get.find();
 
@@ -12,17 +14,22 @@ class NotificationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListView.builder(
-            shrinkWrap: true,
-            itemCount: viewModel.notificationsList.length,
-            itemBuilder: (context, index) {
-              return NotificationItem(
-                  notification: viewModel.notificationsList[index]);
-            }
-        )
-      ],
+    return Scaffold(
+      appBar: CustomAppBar(
+        titleText: lang_key.notifications.tr,
+      ),
+      body: Column(
+        children: [
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: viewModel.notificationsList.length,
+              itemBuilder: (context, index) {
+                return NotificationItem(
+                    notification: viewModel.notificationsList[index]);
+              }
+          )
+        ],
+      ),
     );
   }
 }
@@ -41,7 +48,7 @@ class NotificationItem extends StatelessWidget {
         children: [
           Expanded(
             child: notification.imageUrl == null ? Image.asset(
-              'assets/icons/person_circle.png',
+              'assets/images/person_circle.png',
               color: Theme.of(context).colorScheme.secondary,
               fit: BoxFit.fitHeight,
               height: 50,

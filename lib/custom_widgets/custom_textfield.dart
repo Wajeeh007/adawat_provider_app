@@ -25,6 +25,11 @@ class CustomTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets? padding;
   final double borderRadius;
+  final bool? enabled;
+  final bool isSearchField;
+  final Color? searchPrefixIconColor;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
 
   const CustomTextField({
     super.key,
@@ -48,7 +53,12 @@ class CustomTextField extends StatelessWidget {
     this.initialValue,
     this.inputFormatters,
     this.padding,
-    this.borderRadius = kContainerRadius
+    this.borderRadius = kContainerRadius,
+    this.enabled,
+    this.isSearchField = false,
+    this.searchPrefixIconColor,
+    this.textAlign = TextAlign.start,
+    this.textStyle,
   });
 
   @override
@@ -81,6 +91,8 @@ class CustomTextField extends StatelessWidget {
             onTapOutside: (onTap) {
               FocusManager.instance.primaryFocus!.unfocus();
             },
+            textAlign: textAlign!,
+            enabled: enabled,
             cursorColor: Get.isDarkMode ? darkThemeLightGrey : primaryBlack,
             cursorHeight: 20,
             inputFormatters: inputFormatters,
@@ -95,7 +107,7 @@ class CustomTextField extends StatelessWidget {
             obscureText: obscureText,
             validator: validator,
             onTap: onTap,
-            style: Theme.of(context).textTheme.labelMedium,
+            style: textStyle ?? Theme.of(context).textTheme.labelMedium,
             decoration: InputDecoration(
               hintStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: Get.isDarkMode ? darkThemeLightGrey.withOpacity(0.6) : lightThemeBorderGrey
@@ -105,7 +117,13 @@ class CustomTextField extends StatelessWidget {
               ),
               hintText: hintText,
               suffixIcon: suffixIcon,
-              prefixIcon: prefixIcon
+              prefixIcon: prefixIcon ?? (
+                  isSearchField ? Icon(
+                    Icons.search_rounded,
+                    size: 18,
+                    color: searchPrefixIconColor,
+                  ) : null
+              ),
             ),
           ),
         ],

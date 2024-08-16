@@ -1,8 +1,11 @@
 class ServiceCategory {
 
   String? name;
-  bool? selected;
+  int? numberOfServices;
 
-  ServiceCategory({this.name, this.selected});
+  ServiceCategory({
+    this.name,
+    this.numberOfServices
+  });
 
 }

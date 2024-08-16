@@ -13,7 +13,7 @@ class ImageAvatar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: url == null ? Image.asset(
-        'assets/icons/person_circle.png',
+        'assets/images/person_circle.png',
         color: Theme.of(context).colorScheme.secondary,
         fit: BoxFit.fitHeight,
         height: heightAndWidth,

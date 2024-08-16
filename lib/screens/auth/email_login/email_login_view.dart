@@ -2,7 +2,6 @@ import 'package:adawat_provider_app/custom_widgets/custom_button.dart';
 import 'package:adawat_provider_app/custom_widgets/custom_textfield.dart';
 import 'package:adawat_provider_app/custom_widgets/password_visibility_icon.dart';
 import 'package:adawat_provider_app/helpers/constants.dart';
-import 'package:adawat_provider_app/helpers/routes.dart';
 import 'package:adawat_provider_app/screens/auth/email_login/email_login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -70,7 +69,8 @@ class EmailLoginView extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: CustomButton(
-                            onTap: () => Get.offAllNamed(AppRoutes.bottomBar),
+                            onTap: () {},
+                              // => Get.offAllNamed(AppRoutes.bottomBar),
                             text: lang_key.login.tr,
                           ),
                         ),

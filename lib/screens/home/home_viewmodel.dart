@@ -17,7 +17,7 @@ class HomeViewModel extends GetxController {
   @override
   void onReady() {
     selectedDateString.value = 'Today';
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(milliseconds: 1500), () {
       showBookingsData.value = true;
       showNextBooking.value = true;
       showEarningGraph.value = true;

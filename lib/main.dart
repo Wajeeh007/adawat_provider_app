@@ -1,5 +1,3 @@
-import 'package:adawat_provider_app/screens/appbar_and_drawer/appbar_and_drawer_view.dart';
-import 'package:adawat_provider_app/screens/auth/login_options/login_options_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -26,7 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Adawat Provider App',
-      home: AppbarAndDrawerView(),
+      // home: const AppbarAndDrawerView(),
       theme: ThemeHelpers.lightTheme,
       darkTheme: ThemeHelpers.darkTheme,
       themeMode: ThemeMode.system,
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       initialBinding: InitBinding(),
       getPages: AppRoutes.pages,
-      // initialRoute: AppRoutes.initRoute,
+      initialRoute: AppRoutes.initRoute,
     );
   }
 

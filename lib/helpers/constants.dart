@@ -25,13 +25,27 @@ const lightModeTextGreyAndShadow = Color(0xff9e9e9e);
 List<BoxShadow> kShadow = [
   BoxShadow(
       offset: const Offset(0, 10),
-      spreadRadius: 0.1,
-      blurRadius: 20,
+      spreadRadius: 0.05,
+      blurRadius: 30,
       color: Get.context!.theme.shadowColor
+  )];
+
+List<BoxShadow> kLightShadow = [
+  BoxShadow(
+      offset: const Offset(0, 10),
+      spreadRadius: 0.05,
+      blurRadius: 30,
+      color: Get.context!.theme.shadowColor.withOpacity(0.35)
   )];
 
 /// Border Radius
 BorderRadius kBorderRadius = BorderRadius.circular(kContainerRadius);
+
+/// Shimmer container decoration
+BoxDecoration kShimmerContainerDecoration = BoxDecoration(
+  borderRadius: kBorderRadius,
+  color: Get.context!.theme.colorScheme.secondaryContainer,
+);
 
 /// Numerical Constants
 const kContainerRadius = 15.0;
@@ -39,6 +53,15 @@ const constraintSubtractValue = 30;
 
 /// Type of status
 enum ContainerType {pending, completed, cancelled}
+
+/// Bank Name containers color list
+List<Color> colors = [
+  Colors.amber,
+  Colors.deepPurple,
+  Colors.green,
+  Colors.pink,
+  Colors.indigo,
+];
 
 /// Months list
 const List<String> months = [

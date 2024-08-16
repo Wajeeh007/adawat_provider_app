@@ -1,8 +1,10 @@
 import 'package:adawat_provider_app/custom_widgets/custom_appbar.dart';
 import 'package:adawat_provider_app/custom_widgets/custom_network_image.dart';
 import 'package:adawat_provider_app/helpers/constants.dart';
+import 'package:adawat_provider_app/helpers/global_variables.dart';
 import 'package:adawat_provider_app/helpers/routes.dart';
 import 'package:adawat_provider_app/screens/appbar_and_drawer/appbar_and_drawer_viewmodel.dart';
+import 'package:adawat_provider_app/screens/auth/login_options/login_options_view.dart';
 import 'package:adawat_provider_app/screens/home/home_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ class AppbarAndDrawerView extends StatelessWidget {
       drawer: const CustomDrawer(),
       appBar: CustomAppBar(
         includeNotification: true,
-        backBtn: false,
+        showLeading: false,
         elevation: 1,
         titleWidget: Image(
             image: AssetImage(
@@ -65,22 +67,27 @@ class CustomDrawer extends StatelessWidget {
           SideDrawerTile(
               leadingIcon: Icons.chat_outlined,
               titleText: lang_key.inbox.tr,
-              onTap: () {}
+              onTap: () => Get.toNamed(AppRoutes.inbox)
           ),
           SideDrawerTile(
               leadingIcon: CupertinoIcons.creditcard,
-              titleText: lang_key.bank.tr,
-              onTap: (){}
+              titleText: lang_key.bankAccount.tr,
+              onTap: () => Get.toNamed(AppRoutes.bankAccountsListing)
           ),
           SideDrawerTile(
               leadingIcon: Icons.support_agent_rounded,
               titleText: lang_key.support.tr,
-              onTap: () {}
+              onTap: () => Get.toNamed(AppRoutes.support)
+          ),
+          SideDrawerTile(
+            leadingIcon: CupertinoIcons.info_circle,
+            titleText: lang_key.aboutUs.tr,
+            onTap: () => Get.toNamed(AppRoutes.aboutUs),
           ),
           SideDrawerTile(
               leadingIcon: CupertinoIcons.doc_append,
               titleText: lang_key.termsAndConditions.tr,
-              onTap: () {}
+              onTap: () => Get.toNamed(AppRoutes.termsAndConditions)
           ),
           Expanded(
             child: Align(
@@ -88,7 +95,7 @@ class CustomDrawer extends StatelessWidget {
               child: SideDrawerTile(
                   leadingIcon: Icons.logout_rounded,
                   titleText: lang_key.logout.tr,
-                  onTap: () {},
+                  onTap: () => Get.offAll(() => LoginOptionsView()),
                 leadingIconColor: errorRed,
                 titleTextColor: errorRed,
                 tileColor: errorRed.withOpacity(0.15),
@@ -120,7 +127,7 @@ class DrawerHeadContent extends StatelessWidget {
             top: 0,
             right: 0,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () => Get.toNamed(AppRoutes.accountSettings),
               icon: const Icon(CupertinoIcons.gear),
             )
         ),
@@ -155,6 +162,7 @@ class WalletOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () => Get.toNamed(AppRoutes.wallet, arguments: {'walletAmount': GlobalVariables.amountInWallet.value}),
       minLeadingWidth: 20,
       tileColor: Theme.of(context).colorScheme.secondary.withOpacity(Get.isDarkMode ? 0.15 : 0.3),
       leading: Icon(
@@ -166,9 +174,8 @@ class WalletOption extends StatelessWidget {
         style: Theme.of(context).textTheme.labelLarge,
       ),
       trailing: RichText(
-        //TODO: Limit amount to show e.g 9999+ SAR
         text: TextSpan(
-          text: '250 ',
+          text: GlobalVariables.amountInWallet.value > 9999 ? '9999+ ' : '${GlobalVariables.amountInWallet.value} ',
         style: Theme.of(context).textTheme.labelLarge?.copyWith(
           fontWeight: FontWeight.w600
         ),

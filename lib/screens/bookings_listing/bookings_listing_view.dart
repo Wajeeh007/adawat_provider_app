@@ -7,13 +7,14 @@ import 'package:adawat_provider_app/helpers/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:adawat_provider_app/helpers/languages/translations_key.dart' as lang_key;
+import 'package:shimmer/shimmer.dart';
 import 'bookings_listing_viewmodel.dart';
 
-final BookingsViewModel viewModel = Get.put<BookingsViewModel>(BookingsViewModel());
-
 class BookingsListingView extends StatelessWidget {
-  const BookingsListingView({super.key});
+  BookingsListingView({super.key});
 
+  final BookingsListingViewModel viewModel = Get.put<BookingsListingViewModel>(BookingsListingViewModel());
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +23,11 @@ class BookingsListingView extends StatelessWidget {
         titleText: lang_key.bookings.tr,
         bottom: TabBar(
             dividerColor: Colors.transparent,
-            indicatorColor: Get.isDarkMode ? primaryDullYellow : primaryYellow,
+            indicatorColor: Theme.of(context).colorScheme.primary,
             padding: const EdgeInsets.only(top: 20),
             labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: Get.isDarkMode ? primaryDullYellow : primaryYellow
+                color: Theme.of(context).colorScheme.primary
             ),
             unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
             controller: viewModel.tabController,
@@ -42,100 +43,38 @@ class BookingsListingView extends StatelessWidget {
           Expanded(
             child: TabBarView(
             controller: viewModel.tabController,
-            children: const [
-              ScheduledList(),
-              CompletedList(),
-              CancelledList()
-            ],
-                  ),
-          ),
-      ]
+            children: [
+              BookingsList(type: ContainerType.pending, loadingBool: viewModel.showScheduledList),
+              BookingsList(type: ContainerType.completed, loadingBool: viewModel.showCompletedList),
+              BookingsList(type: ContainerType.cancelled, loadingBool: viewModel.showCancelledList)
+            ]),
+          )]
       ),
     );
   }
 }
 
-/// Pending bookings list
-class ScheduledList extends StatelessWidget {
-  const ScheduledList({super.key});
+/// Listview builder for bookings lists
+class BookingsList extends StatelessWidget {
+  BookingsList({super.key, required this.type, required this.loadingBool});
+
+  final RxBool loadingBool;
+  final ContainerType type;
+
+  final BookingsListingViewModel viewModel = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => viewModel.showScheduledList.value ? Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: ListView.builder(
-          itemCount: 1,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return const BookingContainer(type: ContainerType.pending,);
-          },
-        ),
-      ) : Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(
-            color: Theme.of(context).colorScheme.secondary,
-          )
-        ],
+    return Obx(() => Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: ListView.builder(
+        itemCount: loadingBool.value ? 1 : 3,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return loadingBool.value ? BookingContainer(type: type,) : const BookingContainerShimmer();
+        },
       ),
-    ),
-    );
-  }
-}
-
-/// Completed bookings list
-class CompletedList extends StatelessWidget {
-  const CompletedList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() => viewModel.showCompletedList.value ? Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return const BookingContainer(type: ContainerType.completed,);
-          },
-        ),
-      ) : Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(
-            color: Theme.of(context).colorScheme.secondary,
-          )
-        ],
-      ),
-    ),
-    );
-  }
-}
-
-/// Cancelled bookings list
-class CancelledList extends StatelessWidget {
-  const CancelledList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() => viewModel.showCancelledList.value ? Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return const BookingContainer(type: ContainerType.cancelled,);
-          },
-        ),
-      ) : Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(
-            color: Theme.of(context).colorScheme.secondary,
-          )
-        ],
-      ),
-    ),
+    )
     );
   }
 }
@@ -157,7 +96,7 @@ class BookingContainer extends StatelessWidget {
         borderRadius: kBorderRadius,
       ),
       child: InkWell(
-        onTap: () => Get.toNamed(AppRoutes.bookingDetails, arguments: {'isScheduled': type == ContainerType.pending}),
+        onTap: () => Get.toNamed(AppRoutes.bookingDetails, arguments: {'bookingType': type}),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -168,7 +107,7 @@ class BookingContainer extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: kBorderRadius,
-                      child: SizedBox(
+                      child: const SizedBox(
                         width: 100,
                         height: 80,
                         child: Placeholder(),
@@ -254,6 +193,118 @@ class BookingContainer extends StatelessWidget {
             StatusBasedWidget(type: type),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Booking Shimmer container
+class BookingContainerShimmer extends StatelessWidget {
+  const BookingContainerShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: kBorderRadius,
+        border: Border.all(
+          color: Theme.of(context).colorScheme.secondaryContainer
+        )
+      ),
+      child: Shimmer.fromColors(
+          baseColor: Theme.of(context).colorScheme.tertiaryContainer,
+          highlightColor: Theme.of(context).colorScheme.tertiaryFixedDim,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+             children: [
+               Row(
+                 children: [
+                   SizedBox(
+                     height: 80,
+                     child: Row(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Container(
+                           width: 100,
+                           height: 80,
+                           decoration: kShimmerContainerDecoration
+                         ),
+                         const SizedBox(width: 15,),
+                         Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             Container(
+                               width: Get.width * 0.45,
+                               height: 35,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                             const SizedBox(height: 5,),
+                             Container(
+                               width: Get.width * 0.25,
+                               height: 20,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                           ],
+                         ),
+                       ],
+                     ),
+                   ),
+                 ],
+               ),
+               Padding(
+                 padding: const EdgeInsets.symmetric(vertical: 10,),
+                 child: Column(
+                   children: [
+                     Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                         Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             Container(
+                               height: 10,
+                               width: 30,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                             const SizedBox(height: 5,),
+                             Container(
+                               height: 15,
+                               width: 80,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                           ],
+                         ),
+                         Column(
+                           crossAxisAlignment: CrossAxisAlignment.end,
+                           children: [
+                             Container(
+                               height: 10,
+                               width: 30,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                             const SizedBox(height: 5,),
+                             Container(
+                               height: 15,
+                               width: 80,
+                               decoration: kShimmerContainerDecoration,
+                             ),
+                           ],
+                         ),
+                       ],
+                     ),
+                   ],
+                 ),
+               ),
+               Container(
+                 width: double.infinity,
+                 height: 120,
+                 decoration: kShimmerContainerDecoration,
+               ),
+             ],
+            ),
+          )
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BookingsViewModel extends GetxController with GetSingleTickerProviderStateMixin{
+class BookingsListingViewModel extends GetxController with GetSingleTickerProviderStateMixin{
 
   late TabController tabController = TabController(length: 3, vsync: this);
 
@@ -12,7 +12,7 @@ class BookingsViewModel extends GetxController with GetSingleTickerProviderState
 
   @override
   void onReady() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 3), () {
       showScheduledList.value = true;
       showCompletedList.value = true;
       showCancelledList.value = true;

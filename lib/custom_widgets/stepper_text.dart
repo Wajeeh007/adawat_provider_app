@@ -34,8 +34,8 @@ class StepperText extends StatelessWidget {
               children: [
                 Text(
                   texts[index1],
-                  style: index <= index1 ? Theme.of(context).textTheme.labelMedium : Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Get.isDarkMode ? primaryDullYellow : primaryYellow
+                  style: index < index1 ? Theme.of(context).textTheme.labelMedium : Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.primary
                   ),
                 ),
                 Padding(

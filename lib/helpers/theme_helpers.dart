@@ -27,8 +27,9 @@ class ThemeHelpers {
           primary: primaryYellow, /// Primary is used as the variant of yellow used in this theme
           secondary: lightThemeBorderGrey, /// Secondary is the second most used color. This is used as border color, description text color and shadow color
           tertiaryContainer: lightModeShimmerBaseGrey, /// Tertiary Container is used as the base color for shimmer effect
-          tertiaryFixedDim: lightModeShimmerHighGrey /// Tertiary Fixed Dim is used as the high color for shimmer effect
-      ),
+          tertiaryFixedDim: lightModeShimmerHighGrey, /// Tertiary Fixed Dim is used as the high color for shimmer effect
+          secondaryContainer: lightModeShimmerBaseGrey.withOpacity(0.4), /// This color is used as the color for shimmer container. Change this color when changing tertiaryContainer with opacity set to 0.4.
+        ),
       iconButtonTheme: IconButtonThemeData(style: IconButton.styleFrom(
           foregroundColor: primaryBlack, iconSize: 20)),
       iconTheme: const IconThemeData(color: primaryBlack, size: 20,),
@@ -57,6 +58,12 @@ class ThemeHelpers {
               borderRadius: BorderRadius.circular(kContainerRadius),
               borderSide: const BorderSide(
                   color: lightThemeBorderGrey, width: 1.2)
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(kContainerRadius),
+              borderSide: BorderSide(
+                  color: lightThemeBorderGrey.withOpacity(0.5), width: 1
+              )
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kContainerRadius),
@@ -171,7 +178,8 @@ class ThemeHelpers {
         primary: primaryDullYellow, /// Primary is used as the variant of yellow used in this theme
         secondary: darkThemeLightGrey, /// Secondary is the second most used color. This is used as border color, description text color and shadow color
           tertiaryContainer: lightModeShimmerBaseGrey, /// Tertiary Container is used as the base color for shimmer effect
-          tertiaryFixedDim: lightModeShimmerHighGrey /// Tertiary Fixed Dim is used as the high color for shimmer effect
+          tertiaryFixedDim: lightModeShimmerHighGrey, /// Tertiary Fixed Dim is used as the high color for shimmer effect
+        secondaryContainer: lightModeShimmerBaseGrey.withOpacity(0.4) /// This color is used as the color for shimmer container. Change this color when changing tertiaryContainer with opacity set to 0.4
       ),
       iconTheme: const IconThemeData(color: darkThemeLightGrey, size: 20,),
       appBarTheme: const AppBarTheme(
@@ -199,6 +207,12 @@ class ThemeHelpers {
               borderRadius: BorderRadius.circular(kContainerRadius),
               borderSide: const BorderSide(
                   color: darkThemeLightGrey, width: 1.2)
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(kContainerRadius),
+              borderSide: BorderSide(
+                  color: darkThemeLightGrey.withOpacity(0.5), width: 1
+              )
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kContainerRadius),

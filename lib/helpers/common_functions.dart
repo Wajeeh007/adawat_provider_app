@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 class CommonFunctions {
 
+  /// Validate email entered in textfield
   static String? validateEmail(String? value) {
     if (GetUtils.isBlank(value)!) {
       return lang_key.fieldIsRequired.tr;
@@ -16,6 +17,7 @@ class CommonFunctions {
     }
   }
 
+  /// Validate textfield if it is empty
   static String? validateDefaultField(String? value) {
     if (GetUtils.isBlank(value)!) {
       return lang_key.fieldIsRequired.tr;
@@ -24,6 +26,7 @@ class CommonFunctions {
     }
   }
 
+  /// Show error toast in case an error occurs
   static showErrorToast({
     required BuildContext context,
     required String desc,
@@ -44,6 +47,7 @@ class CommonFunctions {
     ).show(context);
   }
 
+  /// Get time difference and convert it into hours, minutes or days
   String getTimeDifference(DateTime dateTime) {
     Duration difference = DateTime.now().difference(dateTime);
     if(difference.inHours > 0 && difference.inDays < 1) {
@@ -55,4 +59,10 @@ class CommonFunctions {
     }
   }
 
+  /// Repopulate contents of observable list from actual data list
+  static repopulateList(List<dynamic> contentList, RxList<dynamic> listToPopulate) {
+    listToPopulate.clear();
+    listToPopulate.addAll(contentList);
+    listToPopulate.refresh();
+  }
 }

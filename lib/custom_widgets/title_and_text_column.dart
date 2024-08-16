@@ -8,8 +8,7 @@ class TitleAndTextColumn extends StatelessWidget {
     this.text,
     this.detailWidget,
     this.crossAxisAlignment
-  }) : assert(text != null || detailWidget != null, 'Both text and details property cannot be null'),
-      assert(text == null || detailWidget == null, 'Cannot provide both text and details property. Remove one of the two');
+  }) : assert((text == null && detailWidget == null) || (text != null && detailWidget == null) || (text == null && detailWidget != null), 'Cannot provide both text and details property. Remove one of the two');
 
   final String title;
   final String? text;

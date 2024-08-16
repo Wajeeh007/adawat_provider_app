@@ -9,12 +9,14 @@ class BottomSheetItem extends StatelessWidget {
     super.key,
     required this.itemsList,
     required this.index,
-    required this.chosenFilterValue
+    required this.chosenFilterValue,
+    this.goBack = false
   });
 
   final int index;
   final RxList<BottomSheetItemModel> itemsList;
   final RxString chosenFilterValue;
+  final bool? goBack;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class BottomSheetItem extends StatelessWidget {
           itemsList[index].isSelected = true;
           itemsList.refresh();
           chosenFilterValue.value = itemsList[index].text!;
+          if(goBack!) Get.back();
         }
       },
       child: Row(

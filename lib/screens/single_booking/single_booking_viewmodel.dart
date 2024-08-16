@@ -1,22 +1,22 @@
+import 'package:adawat_provider_app/helpers/constants.dart';
 import 'package:get/get.dart';
 
 class SingleBookingViewModel extends GetxController {
 
-  bool isScheduledBooking = true;
-
+  ContainerType? bookingType;
   Map<String, dynamic>? args;
 
   @override
   void onInit() {
     args = Get.arguments;
     if(args != null) {
-      if(args!.containsKey('isScheduled')) {
-        isScheduledBooking = args!['isScheduled'];
+      if(args!.containsKey('bookingType')) {
+        bookingType = args!['bookingType'];
       } else {
-        isScheduledBooking = false;
+        bookingType = ContainerType.pending;
       }
     } else {
-      isScheduledBooking = false;
+      bookingType = ContainerType.pending;
     }
     super.onInit();
   }

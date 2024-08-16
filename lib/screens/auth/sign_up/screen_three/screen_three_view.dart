@@ -37,7 +37,7 @@ class ScreenThreeView extends StatelessWidget {
                     StepperText(index: 2, texts: [
                       lang_key.personalInfo.tr,
                       lang_key.address.tr,
-                      lang_key.bank.tr
+                      lang_key.bankAccount.tr
                     ]),
                     const Image(image: Svg('assets/logos/card.svg')),
                     const SizedBox(height: 10,),
@@ -64,7 +64,7 @@ class ScreenThreeView extends StatelessWidget {
                             validator: (value) {
                               if(CommonFunctions.validateDefaultField(value) == null) {
                                 if(value!.length != 16) {
-                                  return lang_key.cardLength.tr;
+                                  return lang_key.ibanLength.tr;
                                 } else {
                                   return null;
                                 }
@@ -86,7 +86,8 @@ class ScreenThreeView extends StatelessWidget {
                             validator: (value) {
                               if(CommonFunctions.validateDefaultField(value) == null) {
                                 if(value!.length != 3) {
-                                  return lang_key.cvcLength.tr;
+                                  return null;
+                                  // return lang_key.cvcLength.tr;
                                 } else {
                                   return null;
                                 }

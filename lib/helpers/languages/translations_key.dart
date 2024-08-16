@@ -1,3 +1,4 @@
+
 /// Auth Screens
   /// Login Options Screen
   const login = 'login',
@@ -15,8 +16,6 @@
   const fullName = 'fullName',
     phoneNumber = 'phoneNumber',
     personalInfo = 'personalInfo',
-    address = 'address',
-    bank = 'bank',
     statedByAdawat = 'statedByAdawat',
     byCheckingBox = 'byCheckingBox',
     confirmPassword = 'confirmPassword';
@@ -52,6 +51,9 @@
     settings = 'settings',
     myServices = 'myServices',
     logout = 'logout',
+    termsAndConditions = 'termsAndConditions',
+      aboutUs = 'aboutUs',
+      support = 'support',
     wallet = 'wallet';
 
   /// Home
@@ -94,63 +96,48 @@
     totalCost = 'totalCost',
     paymentMethod = 'paymentMethod',
     customerName = 'customerName',
+    additionalPhoneNo = 'additionalPhoneNo',
     bookingDetails = 'bookingDetails';
 
   /// My Services Listing
   const searchYourService = 'searchYourService',
       selectedServices = 'selectedServices';
 
+  /// Add New Service
+  const addNewService = 'addNewService',
+      noServiceFound = 'noServiceFound',
+      searchService = 'searchService';
+
   /// Inbox
-  const searchChat = 'searchChat';
-
-  /// Checkout and Cart Screens
-
-    /// Cart
-    const cart = 'cart',
-      netTotal = 'netTotal';
-
-    /// Confirm Address
-    const location = 'location',
-      apply = 'apply',
-      servicesPrice = 'servicesPrice',
-      voucher = 'voucher',
-      total = 'total',
-      addAddress = 'addAddress',
-      additionalPhoneNumber = 'additionalPhoneNumber',
-      confirmAddress = 'confirmAddress',
-      promoCode = 'promoCode';
-
-    /// Payment Method
-    const choosePaymentMethod = 'choosePaymentMethod',
-      tapToShowCost = 'tapToShowCost',
-      tapToCloseDetails = 'tapToShowDetails',
-      completeOrder = 'completeOrder',
-      addCard = 'addCard';
-
-    /// Order Confirmation
-    const orderConfirmed = 'orderConfirmed';
+  const searchChatByName = 'searchChat',
+      noChatsFound = 'noChatsFound';
 
   /// Chat
   const typeSomething = 'typeSomething';
 
   /// Settings
-  const personalDetails = 'profileSettings',
-    aboutUs = 'aboutUs',
-    support = 'support',
-    addRemoveAddress = 'addRemoveAddress',
+  const personalDetails = 'profileDetails',
     changePassword = 'changePassword',
-    bankCards = 'bankCards',
     changePhoneNumber = 'changePhoneNumber',
-    language = 'changeLanguage',
-    termsAndConditions = 'termsAndConditions';
+    proceedWithCaution = 'proceedWithCaution',
+    accountDeleteCaution = 'accountDeleteCaution',
+    language = 'changeLanguage';
 
-  /// Profile Settings
+  /// Personal Details
   const saveAndUpdate = 'saveAndUpdate',
+    iqamaNo = 'iqamaNo',
     discard = 'discard';
 
-  /// Bank Cards listing
-  const searchCard = 'searchCard',
+  /// Bank Accounts Listing
+  const searchAccount = 'searchAccount',
+    noBankAccountFound = 'noBankAccountFound',
+    defaultAccount = 'defaultCard',
     makeDefaultCard = 'makeDefaultCard';
+
+  /// Edit or Add Account
+  const editAccount = 'editAddress',
+    deleteAccountCaution = 'deleteAccountCaution',
+    addAccount = 'addAddress';
 
   /// Change Password
   const createNewPassword = 'createNewPassword',
@@ -162,16 +149,9 @@
     addNewNum = 'addNewNum',
     enterNewNum = 'enterNewNum';
 
-  /// Address Listing
-  const searchAddress = 'searchAddress',
-    makeDefaultAddress = 'makeDefaultAddress',
-    noAddressFound = 'noAddressFound';
-
-  /// Edit Address
-  const editAddress = 'editAddress';
-
   /// Language
-  const searchLanguage = 'searchLanguage';
+  const searchLanguage = 'searchLanguage',
+    noLanguageFound = 'noLanguageFound';
 
   /// Support
   const liveChat = 'liveChat',
@@ -185,11 +165,40 @@
   const intro = 'intro',
     howContractIsFormed = 'howContractIsFormed';
 
+  /// Wallet
+  const requested = 'requested',
+    payoutsHistory = 'payoutsHistory',
+    amountInWallet = 'amountInWallet',
+    timeColon = 'time',
+    amountColon = 'amount',
+    accountTitleColon = 'accountTitleColon',
+    ibanColon = 'iban',
+    requestPayout = 'requestPayout';
+
+  /// Payout Request
+  const payoutRequest = 'payoutRequest',
+      amount = 'amount',
+      selectAccount = 'selectAccount',
+
+    /// Select Account
+    selectBankAccount = 'selectBankAccount',
+    
+    /// Amount
+    maxPayoutAmountColon = 'maxPayoutAmountColon',
+    remainingAmountColon = 'remainingAmountColon',
+    request = 'request';
+
   /// General
   const cont = 'continue',
     date = 'date',
+      deleteAccount = 'deleteAccount',
     showDetails = 'showDetails',
-    payment = 'payment',
+    confirm = 'confirm',
+      address = 'address',
+      bankAccount = 'bankAccount',
+    bankName = 'bankName',
+    accountIban = 'accountIban',
+    accountTitle = 'accountTitle',
     yes = 'yes',
     no = 'no',
     text = 'text',
@@ -201,24 +210,19 @@
     searchBy = 'searchBy',
     by = 'by',
     number = 'number',
-    countryCode = 'countryCode',
+    languageCode = 'languageCode',
     general = 'general',
     name = 'name',
     proceed = 'proceed',
     cancel = 'cancel',
-    viewAll = 'viewAll',
     sar = 'sar',
-    expiry = 'expiry',
       swipeToDelete = 'slideToDelete',
     swipeToEdit = 'slideToEdit',
     tapToRemoveGuider = 'tapToRemoveGuider',
-    bookNow = 'bookNow',
     quantity = 'quantity',
     scheduled = 'pending',
     submit = 'submit',
     account = 'account',
-    note = 'note',
-    edit = 'edit',
     numberAssociatedWithAddress = 'numberAssociatedWithAddress',
     register = 'register';
 
@@ -227,12 +231,9 @@
   enterValidPhoneNo = 'enterValidPhoneNo',
   passwordLength = 'passwordLength',
   passwordNotMatching = 'passwordNotMatching',
-  cardLength = 'cardLength',
-  cvcLength = 'cvcLength',
+  ibanLength = 'ibanLength',
   acceptTermsError = 'acceptTermsError',
-  selectDateError = 'selectDateError',
-  selectTimeError = 'selectTimeError',
-  selectedTimeShort = 'selectedTimeShort',
-  cardLimitReached = 'cardLimitReached',
-  addressLimitReached = 'addressLimitReached',
+  greaterThanTotal = 'greaterThanTotal',
+  greaterThanMaxPayout = 'greaterThanMaxPayout',
+  invalidIqamaNo = 'invalidIqamaNo',
   fieldIsRequired = 'fieldRequired';

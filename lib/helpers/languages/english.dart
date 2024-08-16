@@ -23,10 +23,8 @@ class English {
         key.phoneNumber: 'Phone No',
         key.confirmPassword: 'Confirm Password',
         key.personalInfo: 'Personal Info',
-        key.bank: 'Bank',
         key.statedByAdawat: ' stated by Adawat',
         key.byCheckingBox: 'By checking this box, you agree to the ',
-        key.address: 'Address',
 
         ///Sign Up - Scree Two
         key.houseOrApartment: 'House / Apartment No',
@@ -59,6 +57,9 @@ class English {
       key.settings: 'Settings',
       key.wallet: 'Wallet',
       key.myServices: 'My Services',
+      key.aboutUs: 'About Us',
+      key.support: 'Support',
+      key.termsAndConditions: 'Terms & Conditions',
       key.logout: 'Logout',
 
       /// Home
@@ -101,63 +102,48 @@ class English {
       key.totalCost: 'Total Cost',
       key.paymentMethod: 'Payment Method',
       key.customerName: 'Customer Name',
+      key.additionalPhoneNo: 'Additional Phone No',
       key.bookingDetails: 'Booking Details',
 
       /// My Services Listing
       key.searchYourService: 'Search Your Service',
       key.selectedServices: 'Selected Services',
 
+      /// Add New Service
+      key.addNewService: 'Add New Service',
+      key.searchService: 'Search Service',
+      key.noServiceFound: 'No Service Found',
+
       /// Inbox
-      key.searchChat: 'Search Chat',
-
-      /// Checkout and Cart Screens
-
-        /// Cart
-        key.netTotal: 'Net Total',
-        key.cart: 'Cart',
-
-        /// Confirm Address
-        key.location: 'Location',
-        key.promoCode: 'Promo Code',
-        key.apply: 'Apply',
-        key.voucher: 'Voucher',
-        key.total: 'Total',
-        key.additionalPhoneNumber: 'Additional Phone Number',
-        key.confirmAddress: 'Confirm Address',
-        key.addAddress: 'Add Address',
-        key.servicesPrice: 'Services Price',
-
-        /// Payment Method
-        key.choosePaymentMethod: 'Choose Payment Method',
-        key.tapToShowCost: 'Tap to show cost details',
-        key.tapToCloseDetails: 'Tap to close cost details',
-        key.addCard: 'Add Card',
-        key.completeOrder: 'Complete Order',
-
-        /// Order Confirmation
-        key.orderConfirmed: 'Order Confirmed',
+      key.searchChatByName: 'Search Chat By Name',
+      key.noChatsFound: 'No Chats Found',
 
       /// Chat
       key.typeSomething: 'Type something...',
 
       /// Settings
       key.personalDetails: 'Personal Details',
-      key.aboutUs: 'About Us',
-      key.support: 'Support',
-      key.addRemoveAddress: 'Add/Remove Address',
       key.changePassword: 'Change Password',
-      key.bankCards: 'Bank Cards',
       key.changePhoneNumber: 'Change Phone Number',
       key.language: 'Language',
-      key.termsAndConditions: 'Terms & Conditions',
+      key.proceedWithCaution: 'Proceed with Caution',
+      key.accountDeleteCaution: 'This action is permanent. You will lose all the data associated with this account\n\n Are you sure you want to proceed?',
 
-      /// Profile Settings
+      /// Personal Details
       key.saveAndUpdate: 'Save & Update',
+      key.iqamaNo: 'Iqama No',
       key.discard: 'Discard',
 
       /// Bank Cards listing
-      key.searchCard: 'Search Card',
+      key.searchAccount: 'Search Account',
+      key.noBankAccountFound: 'No Bank Account Found',
+      key.defaultAccount: 'Default Account',
       key.makeDefaultCard: 'Make Default Card',
+
+      /// Edit or Add Account
+      key.editAccount: 'Edit Account',
+      key.addAccount: 'Add Account',
+      key.deleteAccountCaution: 'Proceed with caution. You won\'t be able to retrieve these account details',
 
       /// Change Password
       key.createNewPassword: 'Create New Password',
@@ -165,20 +151,13 @@ class English {
       key.newPassword: 'New Password',
 
       /// Change Phone Number
-      key.changeNumCaution: 'Changing phone number will require you to enter an OTP, and you shall not be able to use your account until it is verified.\nDo you wish to proceed?',
+      key.changeNumCaution: 'Changing phone number will require you to enter an OTP, and you shall not be able to use your account until it is verified.\n\nDo you wish to proceed?',
       key.enterNewNum: 'Enter new phone number. New number cannot be the same as old number',
       key.addNewNum: 'Add New Number',
 
-      /// Address Listing
-      key.searchAddress: 'Search Address',
-      key.noAddressFound: 'No Address Found',
-      key.makeDefaultAddress: 'Make Default Address',
-
-      /// Edit Address
-      key.editAddress: 'Edit Address',
-
       /// Language
       key.searchLanguage: 'Search Language',
+      key.noLanguageFound: 'No Language Found',
 
       /// Support
       key.faq: 'FAQ',
@@ -192,12 +171,40 @@ class English {
       key.intro: '1. Introduction',
       key.howContractIsFormed: '2. How the contract is formed between you and Adawat?',
 
+      /// Wallet
+      key.requested: 'Requested',
+      key.payoutsHistory: 'Payouts History',
+      key.amountInWallet: '(Amount in Wallet)',
+      key.timeColon: 'Time: ',
+      key.amountColon: 'Amount: ',
+      key.accountTitleColon: 'Account Title: ',
+      key.ibanColon: 'IBAN: ',
+      key.requestPayout: 'Request Payout',
+
+      /// Payout Request
+      key.payoutRequest: 'Payout Request',
+      key.selectAccount: 'Select Account',
+      key.amount: 'Amount',
+      
+        /// Select Account
+        key.selectBankAccount: 'Select Bank Account',
+      
+        /// Amount
+        key.maxPayoutAmountColon: 'Max Payout Amount: ',
+        key.remainingAmountColon: 'Remaining Amount: ',
+        key.request: 'Request',
+
       /// General
       key.cont: 'Continue',
       key.general: 'General',
+      key.deleteAccount: 'Delete Account',
+      key.confirm: 'Confirm',
+      key.bankAccount: 'Bank Account',
+      key.bankName: 'Bank Name',
+      key.accountIban: 'Account IBAN',
+      key.accountTitle: 'Account Title',
       key.showDetails: 'Show Details',
-      key.payment: 'Payment',
-      key.expiry: 'Expiry',
+      key.address: 'Address',
       key.label: 'Label',
       key.pickOnMap: 'Pick On Map',
       key.homeWorkOffice: 'Home, Work, Office etc',
@@ -206,7 +213,7 @@ class English {
       key.hourOrHours: 'hour(s)',
       key.searchBy: 'Search by',
       key.number: 'Number',
-      key.countryCode: 'Country Code',
+      key.languageCode: 'Language Code',
       key.by: 'By',
       key.yes: 'Yes',
       key.no: 'No',
@@ -217,13 +224,9 @@ class English {
       key.cancel: 'Cancel',
       key.account: 'Account',
       key.sar: 'SAR',
-      key.bookNow: 'Book Now',
       key.register: 'Register',
       key.quantity: 'Quantity',
-      key.viewAll: 'View All',
       key.submit: 'Submit',
-      key.note: 'Note: ',
-      key.edit: 'Edit',
       key.numberAssociatedWithAddress: 'This phone number shall be associated with this address and serviceman shall use this number to contact',
       key.swipeToDelete: 'Swipe left to delete an item',
       key.swipeToEdit: 'Swipe right to edit an item',
@@ -233,15 +236,12 @@ class English {
       key.enterValidPhoneNo: 'Enter Valid Phone Number',
       key.enterValidEmail: 'Enter Valid Email',
       key.fieldIsRequired: 'Field is Required',
-      key.cardLength: 'Invalid Card No',
-      key.cvcLength: 'Invalid CVC',
+      key.ibanLength: 'Invalid IBAN',
       key.acceptTermsError: 'Accept terms to proceed',
       key.passwordLength: 'Password must be 6 characters long',
-      key.selectDateError: 'Select date to proceed',
-      key.selectTimeError: 'Select time to proceed',
-      key.selectedTimeShort: 'Selected time should be 5 hours greater than current time',
-      key.cardLimitReached: 'You have reached the limit. Remove one to add a new card',
-      key.addressLimitReached: 'You have reached the limit. Remove one to add a new address',
       key.passwordNotMatching: 'Passwords do not match',
+      key.greaterThanTotal: 'Greater than total',
+      key.greaterThanMaxPayout: 'Greater than max payout',
+      key.invalidIqamaNo: 'Invalid Iqama No'
   };
 }

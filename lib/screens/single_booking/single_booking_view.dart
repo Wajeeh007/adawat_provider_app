@@ -2,7 +2,6 @@ import 'package:adawat_provider_app/custom_widgets/custom_appbar.dart';
 import 'package:adawat_provider_app/custom_widgets/custom_button.dart';
 import 'package:adawat_provider_app/custom_widgets/location_container.dart';
 import 'package:adawat_provider_app/custom_widgets/status_based_widget.dart';
-import 'package:adawat_provider_app/custom_widgets/status_container.dart';
 import 'package:adawat_provider_app/custom_widgets/title_and_text_column.dart';
 import 'package:adawat_provider_app/helpers/constants.dart';
 import 'package:adawat_provider_app/screens/single_booking/single_booking_viewmodel.dart';
@@ -12,16 +11,16 @@ import 'package:adawat_provider_app/helpers/languages/translations_key.dart' as 
 import '../../custom_widgets/price_text.dart';
 import '../../custom_widgets/title_and_text_row.dart';
 
-final SingleBookingViewModel viewModel = Get.put<SingleBookingViewModel>(SingleBookingViewModel());
-
 class SingleBookingView extends StatelessWidget {
-  const SingleBookingView({super.key});
+  SingleBookingView({super.key});
+
+  final SingleBookingViewModel viewModel = Get.put<SingleBookingViewModel>(SingleBookingViewModel());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        backBtn: true,
+        showLeading: true,
         titleText: lang_key.bookingDetails.tr,
       ),
       body: LayoutBuilder(
@@ -63,8 +62,8 @@ class SingleBookingView extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            if(viewModel.isScheduledBooking) CustomButton(onTap: () {}, text: lang_key.startActivity.tr, height: 45,),
-                            StatusBasedWidget(type: ContainerType.pending,
+                            if(viewModel.bookingType == ContainerType.pending) CustomButton(onTap: () {}, text: lang_key.startActivity.tr, height: 45,),
+                            StatusBasedWidget(type: viewModel.bookingType!,
                               starsOffColor: Get.isDarkMode
                                   ? primaryGrey
                                   : darkThemeLightGrey,),
@@ -133,8 +132,9 @@ class LocationAndTime extends StatelessWidget {
                   ),
                 ],
               ),
-              LocationContainer(margin: EdgeInsets.symmetric(vertical: 10),),
+              LocationContainer(margin: const EdgeInsets.symmetric(vertical: 10),),
               TitleAndTextRow(title: lang_key.address.tr, text: 'House No 242, Shaheen Housing Scheme, Warsak Road, Peshawar', textMaxLines: 2,),
+              TitleAndTextRow(title: lang_key.additionalPhoneNo.tr, text: '+966874651654'),
             ],
           ),
         )
@@ -242,6 +242,32 @@ class ServiceContainer extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+/// Container to show status of the service
+class StatusContainer extends StatelessWidget {
+  const StatusContainer({super.key, required this.color, required this.text, required this.textColor});
+
+  final Color color;
+  final String text;
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(kContainerRadius),
+      ),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            color: textColor
+        ),
       ),
     );
   }
